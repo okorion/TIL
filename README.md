@@ -7,3 +7,7 @@ commit rule
 Major -> when changing the git style
 Minor -> when adding directory
 Modified -> etc.
+
+md naming
+
+basic(Directory name)_YYMMDD_(number)

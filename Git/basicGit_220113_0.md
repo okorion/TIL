@@ -4,7 +4,7 @@
 
 
 # git log 깃 히스토리 조회
-# rv
+# rm 삭제
 # init
 # git add 
 # . 과 .. 사용법
