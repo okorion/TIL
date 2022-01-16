@@ -1,13 +1,15 @@
 # Today I Learned
 
 > SSAFY Start Camp~
-commit rule
-'temp_save_{0}.{1}.{2}'.format(Major, Minor, Modified)
+ 
+## Commit naming rule
 
-Major -> when changing the git style
-Minor -> when adding directory
-Modified -> etc.
+    'temp_save_{0}.{1}.{2}'.format(Major, Minor, Modified)
 
-md naming
+* Major -> when changing the git style
+* Minor -> when adding directory
+* Modified -> etc.
 
-basic(Directory name)_YYMMDD_(number)
+## Markdown naming rule
+
+    basic(Directory name)_YYMMDD_(number)
