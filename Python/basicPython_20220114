@@ -1,7 +1,65 @@
-로또 정리하기
+# Kospi.py
+import requests
+from bs4 import BeautifulSoup
+
+url = 'https://finance.naver.com/sise/'
+
+## 요청을 보내서, 문서를 받는다
+response = requests.get(url)
+doc = response.text
+
+## 구조 파악 parsing(해석)
+data = BeautifulSoup(doc, 'html.parser')
+
+## 필요한 데이터 뽑아오기
+result = data.select_one('#KOSPI_now')
+
+## 데이터 출력
+print(result.text)
+
+### 요청Request => URL
+### 응답Response => 문서 1장
+
+### 요청은 URL로 응답은 문서 한 장
+
+
+# Lotto.py
+
+## random 모듈을 꺼낸다
+import random
+
+## 1 ~ 45 까지의 숫자가 들어있는 통을 만든다.
+tong = range(1, 45, 1)
+
+##  통에서 6개를 랜덤으로 고른다
+choice = random.sample(tong, 6)
+
+## 고른 숫자를 출력
+print(choice)
+
+
+#Lunch.py
+
+import random
+
+menus = ['짜장면', '냉면', '짬뽕', '라면', '우동']
+
+menu = random.choice(menus)
+
+print(menu)
+
+
+
+
+
+* Markdown으로 정리하기
 
 ('var1', 'var2', 'var3',) -> 마지막 쉼표 마치기
 기호 사이 띄어쓰기. 1 + 2 = 3
-tab 누를 시 스페이스4번.
 
-pip install (library)
+
+* Library 설치
+
+    pip install (library)
+
+
