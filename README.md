@@ -13,4 +13,3 @@
 ## Markdown naming rule
 
     basic(Directory name)_YYMMDD_(number)
-git
