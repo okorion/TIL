@@ -1,6 +1,6 @@
 # Today I Learned
 
-> SSAFY Start Camp~
+> Start Camp~
  
 ## Commit naming rule
 
@@ -13,3 +13,4 @@
 ## Markdown naming rule
 
     basic(Directory name)_YYMMDD_(number)
+git

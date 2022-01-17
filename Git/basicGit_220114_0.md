@@ -13,7 +13,7 @@
 
 
 
-    $ git remote add origin git@github.com:~~.git    # 접속용 키 붙여넣기
+    $ git remote add origin https://~~@github.com:~~.git    # 접속용 키 붙여넣기
     $ git push -u origin main
 
 # 
