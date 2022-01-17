@@ -5,6 +5,7 @@
   
 * `cd .` 은 현재 폴더로 이동  # `git add .` 현재 폴더 스테이징
 
+
     $ mkdir (Directory name)  # 디렉토리 만들기
 
     $ rm (삭제할 파일명)  # 현재 위치의 파일 삭제
@@ -26,9 +27,10 @@
 
     $ clear  # 터미널 실행 내역 삭제
 
+
 * 터미널 입력창 > (not $) 탈출, cmd 루프 탈출 등 -> (ctrl + c)
 
-## 깃 등록 순서
+## git 등록 순서
 > * 편집기 ctrl + s 저장
 
     $ git add .  # git 스테이징
@@ -37,7 +39,7 @@
 
     $ git push origin master  # git -> github 푸시
 
-## gitignore 등록 순서
+## .gitignore 등록 순서
 
     $ touch .gitignore  # repo 폴더에 생성
 
