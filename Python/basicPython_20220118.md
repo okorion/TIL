@@ -44,12 +44,12 @@
     [출력]
     55
 
-> number = int(input())
-> x = 1
+> number = int(input())  
+> x = 1  
 > sum = 0  
-> 
-> while x < number + 1:
->     sum = sum + x
+>   
+> while x < number + 1:  
+>     sum = sum + x  
 >     x = x + 1  
-> 
+>   
 > print(sum)
