@@ -15,5 +15,7 @@
     9
     10
 
-number = int(input())
-for i in number:
+> number = int(input())
+>
+> for i in range(1, number + 1):
+>     print(i)
