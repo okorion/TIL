@@ -1,5 +1,5 @@
 number = int(input())
-i = 1
+number2 = range(1, number + 1)
 
-for i in number:
-    print(i)
+if i in number2:
+    print(i) 
