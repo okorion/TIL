@@ -57,3 +57,14 @@
 > ]  
 >  
 > all_list_sum(n_list)
+
+
+## 1.숫자의 의미
+    get_secret_word([83, 115, 65, 102, 89]) #=> 'SsAfY'
+
+## 2. 내 이름은 몇일까?
+    get_secret_number('tom') #=> 336
+
+## 3. 강한 이름
+    get_strong_word('z', 'a') #=> 'z'
+    get_strong_word('tom', 'john') #=> 'john'
