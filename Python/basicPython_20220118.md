@@ -17,7 +17,7 @@
 
 > number = int(input())
 >
-> for i in range(1, number + 1):  
+> for i in range(1, number+1):  
 >     print(i)
 
 ## 2. 거꾸로 세로로 출력하기
@@ -37,6 +37,11 @@
 > for i in range(number, -1, -1):
 >     print(i)
 
+> n = 1
+>     while n < number+1:
+>     print(n)
+>     n += 1
+
 ## 3. N줄 덧셈 (number까지의 sum)
     [입력]
     10
@@ -53,3 +58,15 @@
 >     x = x + 1  
 >   
 > print(sum)
+
+> sum(range(1,number+1))
+
+> for n in range(1, number+1):
+>     total -= n
+> 
+> total
+
+> number = 10
+>
+> total = (number+1) * number / 2
+> int(total)
