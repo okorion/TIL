@@ -1,5 +1,6 @@
 2022012x.md
-
+* * *
+20220122
 # 컨테이너 (Container)
 * 여러 개의 값을 저장할 수 있는 것(객체)를 의미하며, 서로 다른 자료형을 저장 할 수 있다.  
     
@@ -37,7 +38,50 @@
 * value는 list, dictionary를 포함한 모든 것이 가능
 
 * * *
-
+20220123
 # 반복문 (Loop Statement)
 ## While 반복문
 * While 문 조건식이 참일 때는 계속 반복됨.  # 반복문에 의해 변하는 수는 조건식의 앞에 위치.
+
+## For 반복문
+### 문자열(String) 순회  # `range()`와 순회할 string의 길이를 활용
+    chars = input('문자 입력 : ')
+    length = len(chars)
+
+    for _ in range(0, length, 1):  # 역문자열 -> range(length-1, -1, -1)
+    print(chars[_])
+
+### 딕셔너리 순회
+    value = []
+
+    for _ in grades:
+    value.append(grades[_])
+    
+    print(value, type(value))  # value값 출력하기.
+
+
+    key = []
+
+    for _ in grades:
+    key.append(_)
+    
+    print(key)  # key값 출력하기.  # return 은 어떻게??
+
+### for 문과 if 문 실습
+> 반복문과 조건문만 활용하여 1~30까지 숫자 중 홀수만 출력
+    num = range(1, 31, 1)
+
+    for _ in num:
+        if _ % 2 == 1:
+            print(_)
+        else:
+            pass
+
+* 출력 예시
+    1
+    3
+    5
+    '''
+    27
+    29
+
