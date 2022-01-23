@@ -94,3 +94,37 @@
 
 * `print(my_url(sidoname='서울', key='asdf'))`
 > https://api.go.kr?sidoname=서울&key=asdf
+
+
+### 반복문을 이용한 팩토리얼 계산
+    def fact(n)
+        total = 1
+        i = 1
+
+        while i <= n:
+            total *= i
+            i += 1
+
+        return total
+> fact(5)  # 120
+
+### 재귀함수
+* 팩토리얼
+    def factorial(n):
+    
+    if n > 1:
+        return n * factorial(n-1)
+    else:
+        return 1
+> `fact(5)`  # 120 출력
+* 피보나치 수열
+    def fib(n):
+    
+        if n == 0:
+            return 0
+        elif n == 1:
+            return 1
+        else:
+           return fib(n-1) + fib(n-2)  # TIP : 재귀함수 작성 시 return 값에 n차 단계 넣기. base case 설정 주의.
+
+> `fib(10)`  # 55 출력
