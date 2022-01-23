@@ -85,7 +85,8 @@
     27
     29
 
-### URL 생성기
+# 함수
+## URL 생성기
     def my_url(**kwargs):
         url = 'https://api.go.kr?'    
         for key, value in kwargs.items():
@@ -96,7 +97,7 @@
 > https://api.go.kr?sidoname=서울&key=asdf
 
 
-### 반복문을 이용한 팩토리얼 계산
+## 반복문을 이용한 팩토리얼 계산
     def fact(n)
         total = 1
         i = 1
@@ -108,7 +109,7 @@
         return total
 > fact(5)  # 120
 
-### 재귀함수
+## 재귀함수
 * 팩토리얼
     def factorial(n):
     
@@ -128,3 +129,24 @@
            return fib(n-1) + fib(n-2)  # TIP : 재귀함수 작성 시 return 값에 n차 단계 넣기. base case 설정 주의.
 
 > `fib(10)`  # 55 출력
+
+## 함수 응용
+### join 메서드 활용
+    strings = [str(num) for num in numbers]
+    print(strings)
+              
+    new_numbers = ''.join(strings)
+    new_numbers  # => ['1', '2', '3']
+> '123'
+### map() 함수 활용
+    numbers = ['1', '2', '3']
+
+    list(map(int, numbers))  # 자주하는 실수 : int(numbers) => TypeError
+
+
+### 코딩 연습
+    input_data = input('여러 개의 정수를 띄어쓰기로 입력하세요: ')
+
+    str_list = input_data.split()  # 1. '3 5' => ['3', '5']
+    int_list = list(map(int, str_list))  # 2. ['3', '5'] => [3, 5]
+    sum(int_list)  # 3. sum([3, 5])
