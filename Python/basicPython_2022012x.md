@@ -85,3 +85,12 @@
     27
     29
 
+### URL 생성기
+    def my_url(**kwargs):
+        url = 'https://api.go.kr?'    
+        for key, value in kwargs.items():
+            url += f'{key}={value}&'
+        return url[:-1]
+
+* `print(my_url(sidoname='서울', key='asdf'))`
+> https://api.go.kr?sidoname=서울&key=asdf
