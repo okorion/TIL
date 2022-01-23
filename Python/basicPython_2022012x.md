@@ -1,4 +1,4 @@
-
+2022012x.md
 
 # 컨테이너 (Container)
 * 여러 개의 값을 저장할 수 있는 것(객체)를 의미하며, 서로 다른 자료형을 저장 할 수 있다.  
@@ -35,3 +35,9 @@
 * 순서를 보장하지 않음.
 * key는 변경 불가능(immutable)한 데이터만 가능  # (immutable : string, integer, float, boolean, tuple, range)
 * value는 list, dictionary를 포함한 모든 것이 가능
+
+* * *
+
+# 반복문 (Loop Statement)
+## While 반복문
+* While 문 조건식이 참일 때는 계속 반복됨.  # 반복문에 의해 변하는 수는 조건식의 앞에 위치.
