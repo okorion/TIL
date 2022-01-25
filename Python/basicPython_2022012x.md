@@ -150,3 +150,5 @@
     str_list = input_data.split()  # 1. '3 5' => ['3', '5']
     int_list = list(map(int, str_list))  # 2. ['3', '5'] => [3, 5]
     sum(int_list)  # 3. sum([3, 5])
+
+
