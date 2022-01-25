@@ -151,4 +151,43 @@
     int_list = list(map(int, str_list))  # 2. ['3', '5'] => [3, 5]
     sum(int_list)  # 3. sum([3, 5])
 
+20220125
+# Practice
+## 썩은 과일 찾기
+> 과수원에 농부 한명이 썩은 과일이 몇개 들어있는 과일 봉지를 가지고 있다. (과일 봉지는 리스트를 의미한다.)
+> 썩은 과일 조각들을 모두 신선한 것으로 교체하는 함수 change_rotten_fruit()를 작성하시오.
+> 예를 들어, ['apple', 'rottenBanana', 'apple'] 이라는 리스트가 주어진 경우, 대체된 리스트는 ['apple', 'banana', 'apple'] 이어야 한다.
+> * 유의
+> 만약 리스트가 null/nil/None이거나 비어 있는 경우 빈 리스트를 반환한다.
+> 반환된 리스트의 요소는 모두 소문자여야 한다.
 
+    def change_rotten_fruit(fruit_bag):
+    result = []
+    for _ in fruit_bag:
+        if len(_) > 6:
+            if _[0] + _[1] + _[2] + _[3] + _[4] + _[5] == 'rotten':
+                a = _[6:]
+                b = a.lower()
+                result.append(b)
+
+        else:
+            a = _.lower()
+            result.append(a)
+
+    return result
+
+## 중복되지 않은 숫자의 합
+> 같은 숫자가 한개 있거나 두개가 들어있는 리스트가 주어진다. 
+> 이러한 리스트에서 숫자가 한개만 있는 요소들의 합을 구하는 함수 sum_of_repeat_number()를 작성하시오.
+> sum_of_repeat_number([4, 4, 7, 8, 10]) # => 25
+
+    def sum_of_repeat_number(numbers):
+    templist = []
+    
+    for _ in numbers:
+        if numbers.count(_) > 1:
+            pass
+        else:
+            templist.append(_)
+    return sum(templist)
+        
