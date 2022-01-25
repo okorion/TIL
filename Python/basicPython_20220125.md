@@ -14,7 +14,7 @@
 
 
 # 2. 혈액형 분류하기
-
+    #1
     def count_blood(bloods):
         blood_dict = {}
 
@@ -29,3 +29,15 @@
         return blood_dict
 
     count_blood(['A', 'A', 'B', 'B', 'O', 'AB'])
+
+    #2
+    def count_blood(bloods):
+        blood_dict = {}
+
+        for blood in bloods:
+            if blood_dict.get[blood]:
+                blood_dict[blood] += 1
+            else:
+                blood_dict.set_default(blood, 1)
+
+        return blood_dict
