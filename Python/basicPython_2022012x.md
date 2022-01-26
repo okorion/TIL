@@ -161,6 +161,7 @@
 > 만약 리스트가 null/nil/None이거나 비어 있는 경우 빈 리스트를 반환한다.
 > 반환된 리스트의 요소는 모두 소문자여야 한다.
 
+    # 1
     def change_rotten_fruit(fruit_bag):
     result = []
     for _ in fruit_bag:
@@ -176,11 +177,24 @@
 
     return result
 
+    # 2
+    def change_rotten_fruit_bag):
+        result = []
+        for fruit in fruit_bag:
+            fruit.replace('rotten', '').lower()
+            result.append(fruit)
+        return result
+
+    # 3
+    def change_rotten_fruit(fruit_bag):
+        return[f.replace('rotten', '')_.lower() for f in fruit_bag]
+
 ## 중복되지 않은 숫자의 합
 > 같은 숫자가 한개 있거나 두개가 들어있는 리스트가 주어진다. 
 > 이러한 리스트에서 숫자가 한개만 있는 요소들의 합을 구하는 함수 sum_of_repeat_number()를 작성하시오.
 > sum_of_repeat_number([4, 4, 7, 8, 10]) # => 25
 
+    # 1
     def sum_of_repeat_number(numbers):
     templist = []
     
@@ -190,4 +204,23 @@
         else:
             templist.append(_)
     return sum(templist)
-        
+
+    # 2
+    def sum_of_repeat_number(numbers):
+        result = 0
+        for number in numbers:
+            if numbers.count(number) == 1:
+                result += number
+        return result
+
+    # 3
+    def sum_of_repeat_number(numbers)
+        once = []
+        mult = []
+        for number in numbers:
+            if number in once:
+                mult.append(number)
+                once.remove(number)
+            elif number not in mult:
+                once.append(number)
+        return once 
