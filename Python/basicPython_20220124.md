@@ -4,16 +4,16 @@
     count_vowerls('apple')  #=> 2
     count_vowerls('banana')  #=> 3
 
-> def count_vowels(wod):
->     vowels = 'aeiou'
->     cnt = 0
->     for vowel in vowels:
->         for char in word:
->             if vowel == char:
->                 cnt += 1
->        return cnt
+>     def count_vowels(wod):
+>         vowels = 'aeiou'
+>         cnt = 0
+>         for vowel in vowels:
+>             for char in word:
+>                 if vowel == char:
+>                     cnt += 1
+>         return cnt
 >   
-> count_vowels('apple'), count_vowels('banana')
+>     count_vowels('apple'), count_vowels('banana')
 
 # 2. 문자열 조작
     (1) .find(x)는 x 의 첫번째 위치를 반환한다 . 없으면 1 을 반환한다.
