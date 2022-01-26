@@ -15,11 +15,11 @@
     [출력 예시]
     1 2 5 10
 
-> N = 10  
+>     N = 10  
 >  
-> for i in range(1, N+1):
->     if N % i == 0:
->         print(i, end=' ')
+>     for i in range(1, N+1):
+>          if N % i == 0:
+>               print(i, end=' ')
 
 ## 2. 중간값 찾기
     numbers = [
@@ -31,13 +31,13 @@
     [출력]
     64
 
-> numbers = [85, 72, 38, 80, 69, 65, 68, 96, 22, 49, 67, 51, 61, 63, 87, 66, 24, 80, 83, 71, 60, 64, 52, 90, 60, 49, 31, 23, 99, 94, 11, 25, 24]  
+>     numbers = [85, 72, 38, 80, 69, 65, 68, 96, 22, 49, 67, 51, 61, 63, 87, 66, 24, 80, 83, 71, 60, 64, 52, 90, 60, 49, 31, 23, 99, 94, 11, 25, 24]  
 >  
-> numbers.sort()  
+>     numbers.sort()  
 >  
-> center_idx = len(numbers) // 2  
+>     center_idx = len(numbers) // 2  
 >   
-> numbers[center+idx]
+>     numbers[center+idx]
 
 ## 3. 계단 만들기
 
@@ -50,12 +50,12 @@
     1 2 3
     1 2 3 4
 
-> number = 4  
+>     number = 4  
 >  
-> for i in range(1, number+1):
->     for j in range(1, i+1):
->         print(j, end=' ')
->     print()
+>     for i in range(1, number+1):
+>         for j in range(1, i+1):
+>             print(j, end=' ')
+>         print()
 
-> for i in range(1, number+1):
->     print(' '.join(map(str, list(range(1, i+1)))))
+>     for i in range(1, number+1):
+>         print(' '.join(map(str, list(range(1, i+1)))))

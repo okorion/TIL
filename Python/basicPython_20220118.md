@@ -15,10 +15,10 @@
     9
     10
 
-> number = int(input())
+>     number = int(input())
 >
-> for i in range(1, number+1):  
->     print(i)
+>     for i in range(1, number+1):  
+>         print(i)
 
 ## 2. 거꾸로 세로로 출력하기
     [입력]
@@ -32,15 +32,15 @@
     1
     0
     
-> number = int(input())
+>     number = int(input())
 >
-> for i in range(number, -1, -1):
->     print(i)
+>     for i in range(number, -1, -1):
+>         print(i)
 
-> n = 1
->     while n < number+1:
->     print(n)
->     n += 1
+>     n = 1
+>         while n < number+1:
+>         print(n)
+>         n += 1
 
 ## 3. N줄 덧셈 (number까지의 sum)
     [입력]
@@ -49,24 +49,24 @@
     [출력]
     55
 
-> number = int(input())  
-> x = 1  
-> sum = 0  
+>     number = int(input())  
+>     x = 1  
+>     sum = 0  
 >   
-> while x < number + 1:  
->     sum = sum + x  
->     x = x + 1  
+>     while x < number + 1:  
+>         sum = sum + x  
+>         x = x + 1  
 >   
-> print(sum)
+>     print(sum)
 
-> sum(range(1,number+1))
+>     sum(range(1,number+1))
 
-> for n in range(1, number+1):
->     total -= n
+>     for n in range(1, number+1):
+>         total -= n
 > 
-> total
+>     total
 
-> number = 10
+>     number = 10
 >
-> total = (number+1) * number / 2
-> int(total)
+>     total = (number+1) * number / 2
+>     int(total)
