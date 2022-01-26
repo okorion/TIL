@@ -27,13 +27,13 @@
 # 3. 정사각형만 만들기
     only_square_area([32, 55, 63], [13, 32, 40, 55])  #=> [1024, 3025]
 
->    def only_square_area(widths, heights):
->        for width in widths:
->             for height in heights:
->                 if width == height:
->                     results.append
+>     def only_square_area(widths, heights):
+>         for width in widths:
+>              for height in heights:
+>                  if width == height:
+>                      results.append
 >
->    only_square_area([32, 55, 63], [13, 32, 40, 55])
+>     only_square_area([32, 55, 63], [13, 32, 40, 55])
 
 
 * * *
@@ -49,12 +49,12 @@
 
 >   from functools import reduce
 > 
->   #1
->   def sum_total(total, scores):
->       return total + score
->   #2
->   def get_average(scores):
->        return reduce(lambda total, score: total + score, scores, 0) / len(scores)
+>     #1
+>     def sum_total(total, scores):
+>         return total + score
+>     #2
+>     def get_average(scores):
+>          return reduce(lambda total, score: total + score, scores, 0) / len(scores)
 > 
 >   get_average(d.value())
 
