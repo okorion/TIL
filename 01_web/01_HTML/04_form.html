@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Form</h1>
+
+    <form action="" method="POST">
+        <div>
+            <label for="username">사용자</label>
+            <input type="text" name="username" placeholder="ID를 입력하세요" autofocus>
+        </div>
+        <label>
+            <label for="pw">비밀번호</label>
+            <input type="password" name="password" id="pw" required>
+        </div>
+
+        <div>
+            <button>제출!</button>
+        </div>
+    </form>
+    <hr>
+    <form   form action="https://google.com/search" method="GET">
+        키워드: <input type="text" name="q">
+        <button>GO</button>
+    </form>
+    <hr>
+    <div>
+        <form action="">
+            <input type="text">
+            <input type="password">
+            <input type="color">
+            <input type="email">
+            <input type="number">
+            <input type="checkbox">
+            <input type="submit">
+
+            <textarea name="" id="" cols="30" rows="10"></textarea>
+        </form>
+    </div>
+
+
+<!-- 
+    1. action="" => 현재 URL 뒤에? + query
+    2. action="google.com"> action URL 뒤에 ? + query
+ -->
+https://google.com/search?q=ssafy
+
+</body>
+</html>
