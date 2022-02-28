@@ -71,7 +71,7 @@ else:
     # for _ in range(0, N):  # 오름차 길이
     #     if num_list[_] >= tmp_num:
     #         tmp_num = num_list[_]
-    #         plus_cnt += 1
+    #         plus_cnt += 1 
     #
     #     apap.append(plus_cnt)
     #     tmp_num = num_list[_]
