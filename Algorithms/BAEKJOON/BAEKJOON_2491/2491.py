@@ -86,7 +86,7 @@ else:
     # for _ in range(0, N):  # 내림차 길이
     #     if new_num_list[_] >= tmp_under_num:
     #         tmp_under_num = new_num_list[_]
-    #         plus_under_cnt += 1
+    #         plus_under_cnt += 1 
     #
     #     apap.append(plus_under_cnt)
     #     tmp_under_num = new_num_list[_]
