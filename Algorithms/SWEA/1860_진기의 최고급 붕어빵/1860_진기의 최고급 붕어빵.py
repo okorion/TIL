@@ -10,7 +10,7 @@ for tc in range(1, T+1):
 
     max0 = K
     tmp = 0
-    tst = 2  # int(customer_time[0]/M + 1) 로 입력해서 테스트 케이스 997/1000 => 오래 걸림.
+    tst = 2  # int(customer_time[0]/M + 1) 로 입력해서 테스트 케이스 997/1000 => 오래 걸림. // K가 1인 케이스 중 오류
 
     error = 0
 
