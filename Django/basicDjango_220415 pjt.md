@@ -1,4 +1,4 @@
-* basicDjango_220415 pjt
+* 20220415 Django pjt07 ~ TIL
 
   
 
@@ -263,48 +263,207 @@
 
   -accounts views.py 코드 분석-
 
+  ```python
+  from django.contrib.auth import login as auth_login, logout as auth_logout
+  ```
   
-
+  => views.py 내 정의한 함수 login과 구분하기 위해 auth_log로 재 명명함
+  
+  ```python
+  from .forms import CustomUserCreationForm
+  
+  
+  def signup(request):
+      if not request.user.is_authenticated:
+          if request.method == 'POST':
+              form = CustomUserCreationForm(request.POST)
+  ```
+  
+  => signup 함수 내에서 사용하는 `UserCreationForm`을 `CustomUserCreationForm` 으로 변경
+  
+  
+  
   #### 8. 각 앱의 forms 파일 세팅
-
-
+  
+  
   ```
   Form 클래스는 form내 field, field 배치, 디스플레이 위젯, 라벨, 초기값, 유효한 값(유효성 체크 이후에) 비유효 field에 관련된 에러메시지를 결정한다. Form 클래스는 또한 미리 정의된 포맷(테이블, 리스트 등)의 템플릿으로 그 자신을 렌더링하는 method나 어떤 요소의 값이라도 얻는 method를 제공한다. 즉, forms.py에 있는 클래스들은 사용자가 제출하는 데이터들을 통과시켜주는 매개체로 작동한다.
   ```
-
   
-
+  -articles forms.py 코드 분석-
+  
+  ```python
+  class ArticleForm(forms.ModelForm):
+  
+      class Meta:
+  ```
+  
+  Meta 클래스는 내부 클래스로 활용되며, 이는 기본 필드의 값을 재정의할 때 사용
+  
+  
+  
+  - Form (일반 폼) : 직접 필드 정의, 위젯 설정이 필요
+  - Model Form (모델 폼) : 모델과 필드를 지정하면 모델폼이 자동으로 폼 필드를 생성
+  
+  ```python
+  from django import forms
+  from .models import Post
+  
+  # Form (일반 폼)
+  class PostForm(forms.Form):
+  	title = forms.CharField()
+  	content = forms.CharField(widget=forms.Textarea)
+  
+  # Model Form (모델 폼)
+  class PostForm(forms.ModelForm):
+  	class Meta:
+  		model = Post
+  		fields = ['title', 'content'] # '__all__' 설정시 전체 필드 추가
+  ```
+  
+  ​    fields의 필드
+  
+  ​    1. 유효성 검사를 하겠다.
+  
+  ​    2. HTML에 출력될 것이다.
+  
+  
+  
+  - Model Form 클래스에는 .save(self, commit=True) 메소드가 구현되어 있음
+  - DB 저장 여부를 commit flag를 통해서 결정
+  - commit=False flag를 통해 함수 호출을 지연 (views.py)
+  
+  
+  
+  -accounts forms.py 코드 분석-
+  
+  기능 구현하다 만 것인지???
+  
+  
+  
+  \# python manage.py makemigrations 중 발생한 오류 1
+  
+  ```bash
+  ~~~
+  django.core.exceptions.ImproperlyConfigured: Creating a ModelForm without either the 'fields' attribute or the 'exclude' attribute is prohibited; form CommentForm needs updating.
+  ```
+  
+  => When you are creating a form using model, you need to specify which fields you want to be included in the form.
+  
+  For example you have a model with the named Article and you want to create a form for the model article.
+  
+  => forms.py 에서 fields를 fiels로 오타
+  
+  \# 오류 2
+  
+  ```bash
+  ~~~
+  TypeError: CommentForm.Meta.fields cannot be a string. Did you mean to type: ('content',)?
+  ```
+  
+  =>
+  
+      class Meta:
+          model = Comment
+          fields = ('content',)  # 'content' 뒤에 쉼표 필수로 넣기
+  
+  
+  
   #### 9. 각 앱의 html 파일 세팅
-
   
-
+  -base.html-
+  
+  ```python
+        {% if user.is_authenticated %}
+        <li><a href="{% url 'articles:article_create' %}">New Article</a></li>
+        <li><a href="{% url 'accounts:profile' user.username %}">{{ user.username }} - Profile</a></li>
+        <li><a href="{% url 'accounts:logout' %}">Logout</a></li>
+        {% else %}
+        <li><a href="{% url 'accounts:login' %}">Login</a></li>
+        <li><a href="{% url 'accounts:signup' %}">Signup</a></li>
+        {% endif %}
+  ```
+  
+   `is_authenticated `
+  
+  - User class의 속성(attributes)
+  - 사용자가 인증되었는지 확인하는 방법
+  - User에 항상 `True`이며, AnomymousUser에 대해서만 항상 ` False`
+  - 단, 이것은 권한(permission)과는 관련이 없으며 사용자가 활성화 상태(active)이거나 유효한 세션(valid session)을 가지고 있는지도 확인하지 않음
+  
+  `{% url 'accounts:profile' user.username %}{{ user.username }}`
+  
+  => user.username 은 정확히 어느 경로를 거쳐서 온건지???
+  
+  
+  
+  -article_index.html-
+  
+  ```python
+    {% for article in articles %}
+    <li><a href="{% url 'articles:article_detail' article.pk%}">{{ article.title }} </a></li>
+    {% endfor %}
+  ```
+  
+  => url 태그와 for문, {{}}는 독립(?)
+  
+  =>  views.py의 article_index 함수에서 `articles = Article.objects.order_by('-pk')`이므로 articles가 `{% for article in articles %}`와  `{{ article.title }}`를 통해 pk 순서대로 나열된 리스트로 보여짐.
+  
+  
+  
+  -article_form.html-
+  
+  ```python
+  <form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button>submit</button>
+  </form>
+  ```
+  
+  => 템플릿에서 사용한 `{{ form.as_p }}`의 form은 views.py의 article_create 함수에서 전달한 ArticleForm의 객체
+  
+  
+  
+  => ` {{ article.content|linebreaksbr }}`에서 linebreaksbr은 텍스트에서 행이 바뀌면 문단으로 변환하도록 하라는 의미
+  
+  
+  
+  *** {{ form }} 을  {{ form.as_p }} 로 바꾸면 인라인이 p 태그로 변한다.(한줄에 있는데 title과 content로 2줄로 바뀐다.)
+  
+  
+  
   #### 10. 마이그레이션
-
+  
   python manage.py makemigrations
   python manage.py migrate
-
   
-
+  
+  
   #### 11. 서버 실행
-
+  
   python manage.py runserver
-
-
-  (((추후 base.html nav 로그인/아웃 설정)))
-
   
-
   
-
+  
+  
+  
   -comment-
-
-  추가 앱을 만드는 관점에서 흐름도도 작성하기.
-
-  흡수하는 시간. 조아따
+  
+  흡수하는 시간 Good.
+  
   내 의지로 처음 공식 문서에 들어가서 구경해봄. (장고 파일의 역할들에 대해 알아보려고)
-
+  
   처음엔 다양한 변수들이 무엇을 의미하는지 아예 몰랐고, 공부하기 두려웠는데 막상 시작하니 재밌었다.
-
+  
   추후 간단한 SNS를 만들어보고 싶다는 생각이 들었다.
-
+  
   SSAFY를 시작하고 나서 가장 열심히, 집중해서, 재밌게 공부한 날이 된 것 같다.
+  
+  
+  
+  작성 기간 4/15~4/17 (4/16 휴식)
+  
+  
+  
+  추후 여유로울 때 글 다듬으면서 복습하기.
