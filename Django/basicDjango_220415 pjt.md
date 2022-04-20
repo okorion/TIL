@@ -1,3 +1,5 @@
+* 
+
 * 20220415 Django pjt07 ~ TIL
 
   
@@ -443,6 +445,16 @@
   #### 11. 서버 실행
   
   python manage.py runserver
+  
+  
+  
+  ![장고 구조](https://user-images.githubusercontent.com/97646070/164213338-a899e3cb-5055-4cde-b863-6dbd9f75fe15.png)
+  
+  
+  
+  @@
+  
+  ![장고 구조 serializer](https://user-images.githubusercontent.com/97646070/164213382-83470cb2-a086-4f14-ac11-933680fa93c0.png)
   
   
   
