@@ -32,7 +32,7 @@
 
   #### 2. 프로젝트 시작
 
-  django-admin startproject <프로젝트 이름>
+  django-admin startproject <프로젝트 이름> . 
   cd <프로젝트 이름>
   python manage.py startapp <추가 앱 이름>
 
@@ -42,7 +42,7 @@
   pjt07, CRUD, one_to_many : 기본 프로젝트
   ```
 
-  
+  *** django-admin startproject <프로젝트 이름> 뒤에 . 을 붙여야 현재 폴더에 생성. 안 붙이면 <프로젝트 이름> 안에 <프로젝트 이름> 프로젝트 생성.
 
   #### 3. 가상환경 설정
 
