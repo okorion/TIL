@@ -2,7 +2,7 @@
 
 
 
-#### 1. 주어진 fixture data를 load할 때 json 파일 위치 참고
+### 1. 주어진 fixture data를 load할 때 json 파일 위치 참고
 
 ![1](https://user-images.githubusercontent.com/97646070/164711342-519f7873-e7b3-4650-ad6a-6c61b1b1e4ea.png)
 
@@ -14,7 +14,7 @@ $ python manage.py loaddata movies/actors.json movies/movies.json movies/reviews
 
 
 
-#### 2. models.py와 serializers.py
+### 2. models.py와 serializers.py
 
 ![4](https://user-images.githubusercontent.com/97646070/164711352-ea7cf34f-6302-4615-bd58-98eaf6d88a7b.png)
 
@@ -26,7 +26,9 @@ $ python manage.py loaddata movies/actors.json movies/movies.json movies/reviews
 
 ![3](https://user-images.githubusercontent.com/97646070/164711365-ac36a008-1290-43bd-8f6b-14cec9a8ac09.png)
 
-=> ```ManyToMantField```는 다대다 관계를 의미. 관련 테이블 생김. Actor 클래스에 ```movies = models.ManyToManyField(Movie, related_name='actors')``` 로 써도 무방.
+=> ```ManyToMantField```는 다대다 관계를 의미. 관련 테이블 생김.
+
+=> Actor 클래스에 ```movies = models.ManyToManyField(Movie, related_name='actors')``` 로 써도 무방.
 
 
 
@@ -52,7 +54,7 @@ $ python manage.py loaddata movies/actors.json movies/movies.json movies/reviews
 
 
 
-Pair Project readme
+> Pair Project readme
 
 배운 점
 
