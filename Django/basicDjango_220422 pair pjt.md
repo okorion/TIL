@@ -4,7 +4,7 @@
 
 #### 1. 주어진 fixture data를 load할 때 json 파일 위치 참고
 
-![1](basicDjango_220422 pair pjt.assets/1.png)
+![1](https://user-images.githubusercontent.com/97646070/164711342-519f7873-e7b3-4650-ad6a-6c61b1b1e4ea.png)
 
 ```
 $ python manage.py migrate
@@ -16,7 +16,7 @@ $ python manage.py loaddata movies/actors.json movies/movies.json movies/reviews
 
 #### 2. models.py와 serializers.py
 
-![4](basicDjango_220422 pair pjt.assets/4.png)
+![4](https://user-images.githubusercontent.com/97646070/164711352-ea7cf34f-6302-4615-bd58-98eaf6d88a7b.png)
 
 => 명세서에서 원하는 응답 형식 확인
 
@@ -24,19 +24,19 @@ $ python manage.py loaddata movies/actors.json movies/movies.json movies/reviews
 
 
 
-![3](basicDjango_220422 pair pjt.assets/3.png)
+![3](https://user-images.githubusercontent.com/97646070/164711365-ac36a008-1290-43bd-8f6b-14cec9a8ac09.png)
 
 => ```ManyToMantField```는 다대다 관계를 의미. 관련 테이블 생김. Actor 클래스에 ```movies = models.ManyToManyField(Movie, related_name='actors')``` 로 써도 무방.
 
 
 
-![5](basicDjango_220422 pair pjt.assets/5.png)
+![5](https://user-images.githubusercontent.com/97646070/164711373-3346bc15-93a2-4a33-8655-9ecaf078dbed.png)
 
 => Movie 모델에서 title만 뽑겠다는 뜻. title 최대 길이는 100으로 설정.
 
 
 
-![6](basicDjango_220422 pair pjt.assets/6-16506286313671.png)
+![6](https://user-images.githubusercontent.com/97646070/164711380-9c7c88bf-f1f4-4a1e-8314-69a50a87283b.png)
 
 => Actor 모델에서 id(기본 장착), movies(manytomanyfield로 사용 가능하게 됨), name(model에서 직접 만든 필드)
 
