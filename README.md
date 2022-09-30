@@ -2,24 +2,25 @@
 
 > Start Camp~
 
+> Start Project~
+
+<br>
+<br>
+
+
 ## Commit naming rule
-
-    'temp_save_{0}.{1}.{2}'.format(Major, Minor, Modified)
-
-* Major -> when changing the git style
-* Minor -> when adding directory
-* Modified -> etc.
-
-
-
-**OR**
+```
+[주제] YY.MM.DD 자세한내용
+```
+* 주제 -> Python, HTML, CSS, Vue, React 등
+* YY.MM.DD -> 22.10.01
+* 자세한내용 -> React Hook에 대해 공부. SPA에 대하여 공부 등
 
 
+<br>
+<br>
 
-***Wing it@***
+## ~~Markdown naming rule~~
 
-
-
-## Markdown naming rule
-
-    basic(Directory name)_YYMMDD_(number)
+    ~~basic(Directory name)_YYMMDD_(number)~~
+   
