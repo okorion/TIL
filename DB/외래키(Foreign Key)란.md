@@ -56,7 +56,7 @@ CREATE TABLE `child` (
 
  No Action : Restrict와 동일, 옵션을 지정하지 않았을 경우 자동으로 선택된다.
 
- 
+
 **2) On Update**
 
  Cascade : 부모 데이터 업데이트 시 자식 데이터도 업데이트 
@@ -74,3 +74,27 @@ CREATE TABLE `child` (
 
 
 출처: [[Mysql\] Foreign Key(외래키) (tistory.com)](https://bamdule.tistory.com/45)
+
+
+
+
+
+**
+외래 키 제약 - ON UPDATE, ON DELETE**
+
+ 
+
+ FOREIGN KEY 제약 조건에 의해 참조되는 테이블의 데이터의 수정이나 삭제가 발생하면, 참조하고 있는 테이블의 데이터도 같이 영향을 받습니다. 이때 참조하고 있는 테이블의 동작은 다음 키워드를 사용하여 제약 조건에서 미리 설정을 할 수 있습니다.
+
+ 
+
+| **제약**                | **설명**                                                | **비고**                              |
+| ----------------------- | ------------------------------------------------------- | ------------------------------------- |
+| **NO ACTION, RESTRICT** | 자식 테이블에 해당 외래키가 있을 때 수정/삭제 되지 않음 |                                       |
+| **CASCADE**             | 자식 테이블의 해당 행도 수정/삭제                       |                                       |
+| **SET NULL**            | 자식 테이블의 외래키를 NULL로                           | 자식 외래키가 NOT NULL일 시 설정 불가 |
+| **SET DEFAULT**         | 자식 테이블의 외래키를 기본값으로                       | InnoDB 엔진에서 사용 불가             |
+
+
+
+출처: [MySQL - 기본키(Primary Key) , 외래키 (Foreign Key) (tistory.com)](https://dding9code.tistory.com/78)
