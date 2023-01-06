@@ -144,3 +144,4 @@ const simpleMultiply = (a, b) => {
 (function hello() {
     console.log('IIFE');
 })();
+
