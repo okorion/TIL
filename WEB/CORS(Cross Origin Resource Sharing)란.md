@@ -166,3 +166,11 @@ CORS의 기본적인 동작 원리는 단순하다. **브라우저는 다른 Ori
 
 
 출처: [[Web\] CORS (Cross Origin Resource Sharing) 이해하기 (tistory.com)](https://it-eldorado.tistory.com/163)
+
+
+
+추가 자료
+
+- [[10분 테코톡\] 🌳 나봄의 CORS - YouTube](https://www.youtube.com/watch?v=-2TgkKYmJt4)
+
+- [웹개발 짜증유발자! CORS가 뭔가요? - YouTube](https://www.youtube.com/watch?v=bW31xiNB8Nc)
