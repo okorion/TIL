@@ -1,6 +1,6 @@
 ### Next.js란? (React 라이브러리의 프레임워크)
 
-=> 기본적인 React는 CSR(Client Side Rendering)에서 SSR(Server Side Rendering) 구현을 도와준다!
+=> 기본적인 React CSR(Client Side Rendering)에서 SSR(Server Side Rendering) 구현을 도와준다!
 
 => CSR과 SSR은 무엇이고, SSR으로 구현하는 이유는?
 
