@@ -61,5 +61,44 @@ print(cnt_within_range(arr, 4, 7)) # 6
 ```
 
 
-
 참고링크: [[파이썬\] 이진 탐색 구현을 도와주는 bisect 라이브러리에 대해 알아보자! (tistory.com)](https://heytech.tistory.com/79)
+
+------
+
+![20230319193233](https://user-images.githubusercontent.com/97646070/226169663-bce67f3d-6571-436a-83f9-715955af6231.png)
+
+
+참고링크: https://folivora.tistory.com/83
+
+-----
+
+### 👨‍💻**ChatGPT Study**👩‍💻
+
+
+bisect 라이브러리는 정렬된 리스트에서 특정 값을 찾는 데 사용됩니다. 이 라이브러리는 이진 검색 알고리즘을 구현하며, 효율적인 검색을 가능하게 합니다.
+
+예를 들어, 다음과 같은 정렬된 리스트가 있다고 가정해보겠습니다:
+
+```
+my_list = [1, 3, 5, 7, 9]
+```
+이 리스트에서 값 5의 위치를 찾으려면 bisect 라이브러리의 bisect_left 또는 bisect_right 함수를 사용할 수 있습니다. bisect_left 함수는 찾고자 하는 값의 가장 왼쪽 위치를 반환하고, bisect_right 함수는 찾고자 하는 값의 가장 오른쪽 위치를 반환합니다.
+
+```
+from bisect import bisect_left, bisect_right
+bisect_left(my_list, 5)
+2
+bisect_right(my_list, 5)
+3
+```
+이 예시에서는 bisect_left 함수를 사용하여 값 5의 가장 왼쪽 위치를 반환했습니다. 따라서 이 값은 리스트에서 두 번째 위치인 인덱스 2입니다.
+
+bisect 라이브러리는 또한 삽입 작업을 수행하는 함수인 insort_left와 insort_right 함수를 제공합니다. 이 함수들은 정렬된 리스트에 새로운 값을 삽입하고, 리스트를 다시 정렬합니다.
+
+```
+from bisect import insort_left, insort_right
+insort_left(my_list, 6)
+my_list
+[1, 3, 5, 6, 7, 9]
+```
+위 예시에서는 insort_left 함수를 사용하여 값 6을 정렬된 리스트에 삽입했습니다. 결과적으로 리스트는 [1, 3, 5, 6, 7, 9]로 변경됩니다.
