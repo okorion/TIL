@@ -153,6 +153,6 @@ fetch("https://localhost:3000/user/post", {
 
 
 
-
+<br>
 
 참고링크: [[개발상식\] Ajax, axios, fetch 차이점 장단점 :: 코딩 공부 일지 (tistory.com)](https://cocoon1787.tistory.com/756)
