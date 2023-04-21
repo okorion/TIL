@@ -105,7 +105,8 @@ rl.on('line', function (line) {
 
 <br>
 
-![화면 캡처 2023-04-21 162420](../../../Desktop/화면 캡처 2023-04-21 162420.png)
+![화면 캡처 2023-04-21 162420](https://user-images.githubusercontent.com/97646070/233570558-5dd07c90-be28-4217-9cd9-ab42279e2f46.png)
+
 
 <br>
 
