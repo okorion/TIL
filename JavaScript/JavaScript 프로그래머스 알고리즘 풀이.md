@@ -105,7 +105,7 @@ rl.on('line', function (line) {
 
 <br>
 
-![image-20230421161813890](../../../AppData/Roaming/Typora/typora-user-images/image-20230421161813890.png)
+![화면 캡처 2023-04-21 162420](../../../Desktop/화면 캡처 2023-04-21 162420.png)
 
 <br>
 
