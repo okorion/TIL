@@ -1,6 +1,10 @@
 
+<<<<<<< HEAD
 
 ### 👨‍💻ChatGPT Study👩‍💻
+=======
+### 👨‍💻 **ChatGPT Study** 👩‍💻
+>>>>>>> 6cdac48 (23.03.18 Modify 🔎 HTTP 상태 코드)
 
 
 
