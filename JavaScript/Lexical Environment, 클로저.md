@@ -1,3 +1,94 @@
+## 🛣️ 렉시컬 환경이란?
+
+- 목차
+- [👉 렉시컬 환경이란?](https://defineall.tistory.com/1206#toc1)
+- - [렉시컬 환경 사용방식](https://defineall.tistory.com/1206#toc21)
+  - [JS 렉시컬 환경의 종류](https://defineall.tistory.com/1206#toc22)
+  - [렉시컬 환경의 구성](https://defineall.tistory.com/1206#toc23)
+  - [렉시컬 환경 생성 과정](https://defineall.tistory.com/1206#toc24)
+  - [코드 실행 과정](https://defineall.tistory.com/1206#toc25)
+  - [변수별 레코드 저장방식](https://defineall.tistory.com/1206#toc26)
+
+## 👉 렉시컬 환경이란?
+
+> JS에서 실행할 변수와 함수를 프로퍼티로 가지는 객체
+>
+> ( JS가 실행될때, 처음 만들어진다. )
+
+ 
+
+### 렉시컬 환경 사용방식
+
+> Javascript가 실행되며, 참조가 필요한 변수와 함수를 Key값을 통해 가져온다.
+
+ 
+
+### JS 렉시컬 환경의 종류
+
+> 1. 스크립트 전체 객체
+>
+> 
+>
+> 2. 실행중인 함수 객체
+>
+> 
+>
+> 3. 코드블록 객체
+
+ 
+
+### 렉시컬 환경의 구성
+
+> 환경 레코드 - 모든 지역변수를 프로퍼티로 저장
+> ( this, 함수 매개변수 등등 )
+>
+> 외부 렉시컬 환경 - 현재 렉시컬 환경을 감싸고 있는 **부모 렉시컬 환경**
+
+ 
+
+### 렉시컬 환경 생성 과정
+
+- JS 코드 실행시, 렉시컬 환경 객체 생성
+- JS 코드에 선언되어 있는 변수들을 "글로벌 레코드"에 저장
+- 함수, 블록 단위로 나누어 "로컬 레코드"를 만들고, 변수를 저장
+
+ 
+
+### 코드 실행 과정
+
+- 필요한 변수와 함수를 "로컬 레코드"에서 검색
+- 없으면 부모 레코드 ( 외부 렉시컬 환경 )에서 검색
+- 글로벌 렉시컬 환경에도 없으면 Error 발생
+- 찾으면 변수 사용
+
+ 
+
+### 변수별 레코드 저장방식
+
+> [var]
+>
+> 초기화
+> \- key : 변수이름
+> \- value : <uninitialized> ( 참조 가능 )
+>
+> [ let, const ]
+>
+> 초기화
+> \- key : 변수이름
+> \- value : <uninitialized> ( 참조 불가능 )
+
+
+
+
+
+<br><br>
+
+#### 참고링크: [[Javascript\] 렉시컬 환경이란? (tistory.com)](https://defineall.tistory.com/1206)
+
+<br>
+
+
+
 ### Lexical Environment의 개념
 
 `Lexical Environment`는 코드 `block`, `function`, `script`를 실행하기 앞서 생성되는 특별한 객체로, 실행할 스코프 범위 안에 있는 **변수와 함수를 프로퍼티로 저장하는 객체**다.
