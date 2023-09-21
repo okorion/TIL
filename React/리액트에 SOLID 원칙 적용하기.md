@@ -314,6 +314,124 @@ useActiveUsers 후크를 만들었으며(좋은 성능을 위해 필터링된 �
 
 
 
+## **Open-closed principle (OCP)**
+
+OCP는 "소프트웨어 엔터티는 확장을 위해 열려야 하지만 수정에는 닫혀 있어야 합니다"라고 말합니다.
+
+React 컴포넌트와 함수는 소프트웨어 엔티티이기 때문에 위의 정의를 그대로 적용할 수 있습니다.
+
+ 
+
+개방 폐쇄 원칙은 원본 소스 코드를 변경하지 않고 확장할 수 있는 방식으로 컴포넌트를 구조화하는 것을 지지합니다.
+
+실제로 작동하는 모습을 보기 위해 다음 시나리오를 고려해 보겠습니다.
+
+다른 페이지에서 공유 Header 컴포넌트를 사용하는 응용 프로그램에서 작업하고 있으며
+
+현재 있는 페이지에 따라 Header가 약간 다른 UI를 렌더링해야 합니다.
+
+```
+const Header = () => {
+  const { pathname } = useRouter()
+  
+  return (
+    <header>
+      <Logo />
+      <Actions>
+        {pathname === '/dashboard' && <Link to="/events/new">Create event</Link>}
+        {pathname === '/' && <Link to="/dashboard">Go to dashboard</Link>}
+      </Actions>
+    </header>
+  )
+}
+
+const HomePage = () => (
+  <>
+    <Header />
+    <OtherHomeStuff />
+  </>
+)
+
+const DashboardPage = () => (
+  <>
+    <Header />
+    <OtherDashboardStuff />
+  </>
+)
+```
+
+------
+
+여기에서 현재 페이지에 따라 다른 페이지 컴포넌트에 대한 링크를 렌더링합니다.
+
+더 많은 페이지를 추가하기 시작할 때 어떤 일이 일어날지 생각하면 이 구현이 나쁘다는 것을 쉽게 알 수 있습니다.
+
+새 페이지가 생성될 때마다 헤더 컴포넌트로 돌아가서 렌더링할 작업 링크를 알 수 있도록 구현을 조정해야 합니다.
+
+이러한 접근 방식은 Header 컴포넌트를 취약하게 만들고 사용되는 컨텍스트와 밀접하게 연결하며, 개방형 원칙에 위배됩니다.
+
+ 
+
+이 문제를 해결하기 위해 컴포넌트 합성을 사용할 수 있습니다.
+
+Header 컴포넌트는 내부에서 무엇을 렌더링할지 신경 쓸 필요가 없으며
+
+**대신 children prop을 사용하여 이를 사용할 컴포넌트에 이 책임을 위임할 수 있습니다.**
+
+```
+const Header = ({ children }) => (
+  <header>
+    <Logo />
+    <Actions>
+      {children}
+    </Actions>
+  </header>
+)
+
+const HomePage = () => (
+  <>
+    <Header>
+      <Link to="/dashboard">Go to dashboard</Link>
+    </Header>
+    <OtherHomeStuff />
+  </>
+)
+
+
+const DashboardPage = () => (
+  <>
+    <Header>
+      <Link to="/events/new">Create event</Link>
+    </Header>
+    <OtherDashboardStuff />
+  </>
+)
+```
+
+------
+
+이 접근 방식을 사용하면 헤더 내부에 있던 변수 논리를 완전히 제거하고
+
+이제 합성을 사용하여 컴포넌트 자체를 수정하지 않고도 문자 그대로 원하는 모든 것을 넣을 수 있습니다.
+
+ 
+
+**비유적으로 이해하는 좋은 방법은 우리가 연결할 수 있는 컴포넌트에 플레이스홀더를 제공하는 것입니다.**
+
+여러 확장 지점이 필요한 경우(또는 children prop이 이미 다른 용도로 사용되는 경우),
+
+원하는 만큼의 다른 prop을 플레이스홀더로 사용할 수 있습니다.
+
+ 
+
+**헤더에서 이를 사용하는 컴포넌트로 일부 컨텍스트를 전달해야 하는 경우 렌더 프롭 패턴을 사용할 수 있습니다.**
+
+보시다시피 합성은 매우 강력할 수 있습니다.
+
+개방-폐쇄 원칙에 따라 컴포넌트 간의 결합을 줄이고 확장성과 재사용성을 높일 수 있습니다.
+
+
+
 <br>
 
 <br>
