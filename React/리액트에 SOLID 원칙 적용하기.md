@@ -430,7 +430,202 @@ const DashboardPage = () => (
 
 개방-폐쇄 원칙에 따라 컴포넌트 간의 결합을 줄이고 확장성과 재사용성을 높일 수 있습니다.
 
+## **Liskov substitution principle (LSP)**
 
+지나치게 단순화된 LSP는 "하위 유형 개체가 상위 유형 개체를 대체해야 하는" 개체 간의 관계 유형으로 정의될 수 있습니다.
+
+이 원칙은 슈퍼타입과 서브타입 관계를 정의하기 위해 클래스 상속에 크게 의존하지만,
+
+클래스 상속은 고사하고 클래스를 거의 다루지 않기 때문에 React에서는 별로 적용할 수 없습니다.
+
+클래스 상속에서 벗어나면 필연적으로 이 원칙이 완전히 다른 것으로 바뀌겠지만
+
+상속을 사용하여 React 코드를 작성하면 의도적으로 나쁜 코드가 생성될 수 있으므로(React 팀은 이를 매우 권장하지 않음) 대신 이 원칙을 건너뛸 것입니다.
+
+## **Interface segregation principle (ISP)**
+
+ISP에 따르면 "클라이언트는 사용하지 않는 인터페이스에 의존해서는 안 됩니다."
+
+**React 애플리케이션을 위해 "컴포넌트는 사용하지 않는 props에 의존해서는 안 됩니다"로 번역할 것입니다.**
+
+ 
+
+여기에서 ISP의 정의를 확장하고 있지만 크게 확장되지는 않습니다.
+
+**prop과 인터페이스는 모두 객체(컴포넌트)와 외부 세계(객체가 사용되는 컨텍스트) 간의 계약으로 정의할 수 있습니다.**
+
+ 
+
+ 
+
+결국 정의에 대해 엄격하고 굴하지 않는 것이 아니라 문제를 해결하기 위해 일반적인 원칙을 적용하는 것입니다.
+
+ISP가 목표로 하는 문제를 더 잘 설명하기 위해 다음 예제에서는 TypeScript를 사용합니다.
+
+비디오 목록을 렌더링하는 응용 프로그램을 고려해 보겠습니다.
+
+```
+type Video = {
+  title: string
+  duration: number
+  coverUrl: string
+}
+
+type Props = {
+  items: Array<Video>
+}
+
+const VideoList = ({ items }) => {
+  return (
+    <ul>
+      {items.map(item => 
+        <Thumbnail 
+          key={item.title} 
+          video={item} 
+        />
+      )}
+    </ul>
+  )
+}
+```
+
+------
+
+각 항목에 사용하는 **Thumbnail** 컴포넌트는 다음과 같습니다.
+
+```
+type Props = {
+  video: Video
+}
+
+const Thumbnail = ({ video }: Props) => {
+  return <img src={video.coverUrl} />
+}
+```
+
+------
+
+이것은 업데이트된 VideoList 구성요소입니다.
+
+**Thumbnail 컴포넌트는 매우 작고 간단하지만 한 가지 문제가 있습니다.**
+
+전체 비디오 개체가 prop으로 전달되는 반면 속성 중 하나만 사용하는 것입니다.
+
+ 
+
+이것이 문제가 되는 이유를 알아보기 위해
+
+동영상 외에도 라이브 스트림에 대한 미리보기 이미지도 표시하기로 결정하고
+
+두 종류의 미디어 리소스가 동일한 목록에 혼합되어 있다고 상상해 보십시오.
+
+라이브 스트림 객체를 정의하는 새로운 타입을 도입합니다.
+
+```
+type LiveStream = {
+  name: string
+  previewUrl: string
+}
+```
+
+------
+
+이것은 업데이트된 VideoList 컴포넌트입니다.
+
+```
+type Props = {
+  items: Array<Video | LiveStream>
+}
+
+const VideoList = ({ items }) => {
+  return (
+    <ul>
+      {items.map(item => {
+        if ('coverUrl' in item) {
+          // it's a video
+          return <Thumbnail video={item} />
+        } else {
+          // it's a live stream, but what can we do with it?
+        }
+      })}
+    </ul>
+  )
+}
+```
+
+------
+
+ 
+
+보시다시피 여기에 문제가 있습니다.
+
+비디오와 라이브 스트림 개체를 쉽게 구분할 수 있지만
+
+비디오와 라이브 스트림이 호환되지 않기 때문에 후자를 바로 Thumbnail 컴포넌트에 전달할 수 없습니다.
+
+ 
+
+첫째, 타입이 다르기 때문에 TypeScript는 즉시 불평할 것입니다.
+
+둘째, 다른 속성명 아래에 썸네일 URL이 포함되어 있습니다.
+
+비디오 객체 내부의 coverURL, liveStream 아래의 coverURL입니다.
+
+썸네일 컴포넌트는 Video만 받는데, 라이브스트림을 Video로 변환해야겠네요?
+
+ 
+
+**이것이 컴포넌트가 실제로 필요한 것보다 더 많은 props에 의존하는 문제의 핵심입니다.**
+
+즉 재사용 가능성이 줄어듭니다.
+
+ 
+
+수정하겠습니다.
+
+**Thumbnail 컴포넌트를 리팩터링하여 필요한 prop에만 의존하는지 확인합니다.**
+
+```
+type Props = {
+  coverUrl: string
+}
+
+const Thumbnail = ({ coverUrl }: Props) => {
+  return <img src={coverUrl} />
+}
+```
+
+------
+
+이 변경으로 이제 비디오와 라이브 스트림의 썸네일을 렌더링하는 데 사용할 수 있습니다.
+
+```
+type Props = {
+  items: Array<Video | LiveStream>
+}
+
+const VideoList = ({ items }) => {
+  return (
+    <ul>
+      {items.map(item => {
+        if ('coverUrl' in item) {
+          // it's a video
+          return <Thumbnail coverUrl={item.coverUrl} />
+        } else {
+          // it's a live stream
+          return <Thumbnail coverUrl={item.previewUrl} />
+        }
+      })}
+    </ul>
+  )
+}
+```
+
+------
+
+**인터페이스 분리 원칙은 시스템 구성 요소 간의 종속성을 최소화하여 컴포넌트가 덜 결합되어 더 많이 재사용할 수 있도록 합니다.**
+
+(사용되는 컨텍스트와 소프트웨어의 분리)
 
 <br>
 
